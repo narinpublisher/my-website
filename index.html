@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <!-- 全ページの <head> 内に必ず入れる -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホーム | わたしのWebサイト</title>
+    <!-- PNG形式の場合はこちら -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ナビゲーションバー（全ページ共通） -->
+    <header class="site-header">
+        <div class="header-inner">
+            <p class="site-title">
+                <a href="index.html">🌿 わたしのWebサイト</a>
+            </p>
+            <!-- header-inner の中、nav タグの直前に追加 -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="メニューを開く">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="active">ホーム</a></li>
+                    <li><a href="about.html">プロフィール</a></li>
+                    <li><a href="works.html">作品集</a></li>
+                    <!-- ↓ 第4章から引き継いで「お問い合わせ」を追加 ↓ -->
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+        <h1>ホーム</h1>
+        <p>わたしのWebサイトへようこそ！</p>
+        <p>このサイトでは、これまでに学習したHTML/CSSの成果をまとめています。</p>
+        <p>上のメニューから「プロフィール」や「作品集」をご覧ください。</p>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 わたしのWebサイト</p>
+    </footer>
+
+    <script>
+    // ハンバーガーボタンとナビゲーションを取得
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const mainNav = document.querySelector('.main-nav');
+ 
+    // ボタンがクリックされたときの処理
+    hamburgerBtn.addEventListener('click', function() {
+        // ボタンに 'is-open' クラスを付けたり外したりする
+        hamburgerBtn.classList.toggle('is-open');
+        // ナビゲーションにも 'is-open' クラスを付けたり外したりする
+        mainNav.classList.toggle('is-open');
+    });
+    </script>
+
+</body>
+</html>

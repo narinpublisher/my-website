@@ -1,0 +1,530 @@
+/* ===== リセット・基本設定 ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== スムーズスクロール（全体に適用） ===== */
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===== 全体のbody設定 ===== */
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    background-color: #F1F8E9;
+    color: #1A1A1A;
+    line-height: 1.8;
+    /* 注意：ここで padding: 40px; などを設定している場合は削除する */
+}
+
+/* === 画像のレスポンシブ設定（全デバイス共通） === */
+img {
+    max-width: 100%;                /* 親要素の幅を超えない */
+    height: auto;                   /* 縦横比を自動で維持する */
+    display: block;                 /* 画像の下の隙間をなくす */
+}
+
+/* ===== サイトヘッダー全体 ===== */
+.site-header {
+    background-color: #2E7D32;      /* ヘッダーの背景色（濃い緑） */
+    position: sticky;               /* スクロールしても上に固定 */
+    top: 0;                         /* 画面の一番上に固定する */
+    z-index: 1;                   /*要素が重なるときに積み重なる順序で、1は0より上に積み上げられる */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  /* 影をつけて立体感を出す */
+}
+
+/* ===== ヘッダー内部（サイトタイトル＋ナビを横並びに） ===== */
+.header-inner {
+    display: flex;                  /* Flexboxで横並びに */
+    align-items: center;            /* 縦方向に中央揃え */
+    justify-content: space-between; /* 左右に振り分ける */
+    max-width: 960px;               /* 最大幅を設定 */
+    margin: 0 auto;                 /* 中央寄せ */
+    padding: 0 24px;                /* 左右の内側余白 */
+    gap: 8px;                       /* タイトルとナビの間隔 */
+}
+
+/* ===== サイトタイトル（ロゴ部分） ===== */
+.site-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.site-title a {
+    color: #FFFFFF;                 /* 白い文字 */
+    text-decoration: none;          /* 下線を消す */
+}
+
+.site-title a:hover {
+    color: #A5D6A7;                 /* ホバーで薄い緑に変わる */
+}
+
+/* ===== ハンバーガーボタン（パソコンでは非表示） ===== */
+.hamburger-btn {
+    display: none;                  /* 通常は非表示 */
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;               /* 背景なし */
+    border: none;                   /* 枠線なし */
+    cursor: pointer;                /* カーソルをポインターに */
+    padding: 6px;
+    border-radius: 4px;
+}
+ 
+/* ===== 3本線のスタイル ===== */
+.hamburger-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #FFFFFF;      /* 白い線 */
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;   /* 開閉アニメーション用 */
+}
+ 
+/* ===== メニューが開いているとき（✕マーク） ===== */
+.hamburger-btn.is-open span:nth-child(1) {
+    /* 1番目（一番上）の線を斜めに傾ける */
+    transform: translateY(7px) rotate(45deg);
+}
+.hamburger-btn.is-open span:nth-child(2) {
+    /* 2番目（真ん中）の線を透明にして消す */
+    opacity: 0;
+}
+.hamburger-btn.is-open span:nth-child(3) {
+    /* 3番目（一番下）の線を逆斜めに傾ける */
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ===== ナビゲーションリスト ===== */
+.nav-list {
+    display: flex;                  /* リストを横並びに */
+    list-style: none;               /* 黒点を消す */
+    gap: 4px;                       /* リスト項目の間隔 */
+}
+
+/* ===== 各ナビリンク ===== */
+.nav-list a {
+    display: block;
+    color: #FFFFFF;
+    text-decoration: none;
+    padding: 16px 18px;             /* 上下16px・左右18pxの余白 */
+    font-size: 15px;
+    border-radius: 4px;
+    transition: background-color 0.2s;  /* ホバー時のアニメーション */
+}
+
+/* ===== ナビゲーションリンクのホバーエフェクト ===== */
+.nav-list a:hover {    
+   /*background-color: #4CAF50;*/       /* マウスを乗せると明るい緑に */
+    background-color: rgba(255, 255, 255, 0.15);    /* 半透明の白で背景を明るく */
+    color: #A5D6A7;                                 /* 文字色を薄いグリーンに */
+}
+
+/* ===== アクティブ（現在表示中）ページのリンク ===== */
+.nav-list a.active {
+    background-color: rgba(255, 255, 255, 0.2);  /* 半透明の白で背景をやや明るく */
+    color: #A5D6A7;       /* ライトグリーンで強調 */
+    font-weight: bold;      /* 現在ページのリンクを太字に */
+}
+
+/* ===== メインコンテンツエリア ===== */
+.main-content {
+    max-width: 960px;               /* コンテンツの最大幅 */
+    margin: 0 auto;                 /* 中央寄せ */
+    padding: 40px 24px;             /* 上下40px・左右24pxの余白 */
+}
+
+/* ===== ページタイトル（h1） ===== */
+.main-content h1 {
+    color: #2E7D32;
+    font-size: 28px;
+    border-bottom: 3px solid #4CAF50;
+    padding-bottom: 12px;
+    margin-bottom: 32px;
+}
+
+/* ===== 作品集グリッド（Flexboxで横並び） ===== */
+.works-grid {
+    display: flex;                  /* Flexboxで横並びに */
+    flex-wrap: wrap;                /* 幅が足りなければ折り返す */
+    gap: 24px;                      /* カード間の間隔 */
+    margin-top: 24px;
+}
+
+/* ===== 作品カード（個別のカード） ===== */
+.work-card {
+    flex: 1 1 260px;                /* 最小260px。余裕があれば広がる */
+    background-color: #FFFFFF;
+    border: 1px solid #C8E6C9;
+    border-top: 4px solid #4CAF50;  /* 上部に緑のアクセントライン */
+    border-radius: 8px;
+    padding: 24px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);  /* 軽い影 */
+    /* transition: box-shadow 0.2s;*/    /* ホバー時のアニメーション用 */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;  /* ← これを追加 */
+}
+
+/* ===== 作品カードのホバーエフェクト ===== */
+.work-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* ソフトシャドウ効果 */
+    transform: translateY(-4px);                  /* カードを4px上に浮かせる */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* 影を少し大きくする */
+}
+
+/* ===== カード内の見出し ===== */
+.work-card h3 {
+    font-size: 18px;
+    color: #2E7D32;
+    margin-bottom: 12px;
+}
+
+/* ===== カード内のテキスト ===== */
+.work-card p {
+    font-size: 14px;
+    color: #37474F;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+/* ===== 作品リンクボタン ===== */
+.work-link {
+    display: inline-block;          /* ブロックのように余白を設定 */
+    color: #2E7D32;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    border: 2px solid #4CAF50;
+    border-radius: 4px;
+    padding: 6px 14px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* ===== 作品リンクボタンのホバー時 ===== */
+.work-link:hover {
+    background-color: #4CAF50;
+    color: #FFFFFF;
+}
+
+
+/* ===== サイトフッター ===== */
+.site-footer {
+    background-color: #2E7D32;      /* ヘッダーと同じ濃い緑 */
+    color: #A5D6A7;                 /* 薄い緑色のテキスト */
+    text-align: center;             /* テキストを中央揃え */
+    padding: 20px;                  /* 上下左右の内側余白 */
+    font-size: 14px;                /* 少し小さめの文字サイズ */
+    margin-top: 60px;               /* コンテンツとフッターの間隔 */
+}
+
+/* ============================================
+   お問い合わせフォームのスタイル
+   ============================================ */
+
+/* ===== ページ説明文 ===== */
+.page-description {
+    color: #555555;
+    font-size: 15px;
+    margin-bottom: 32px;
+}
+
+/* ===== フォーム全体 ===== */
+.contact-form {
+    max-width: 600px;              /* フォームの最大幅 */
+    margin: 0 auto;                /* 中央寄せ */
+}
+
+/* ===== 各フォームグループ（ラベル＋入力欄）===== */
+.form-group {
+    margin-bottom: 24px;           /* グループ間の余白 */
+}
+
+/* ===== ラベル ===== */
+.form-group label {
+    display: block;                /* ブロック要素にして改行させる */
+    font-size: 15px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8px;            /* ラベルと入力欄の間隔 */
+}
+
+/* ===== 「必須」バッジ ===== */
+.required {
+    display: inline-block;
+    background-color: #2E7D32;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 3px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+/* ===== テキスト入力欄（input） ===== */
+input[type="text"],
+input[type="email"] {
+    display: block;                /* ブロック要素にする */
+    width: 100%;                   /* 親要素いっぱいに広げる */
+    padding: 12px 16px;            /* 内側の余白 */
+    font-size: 15px;
+    font-family: inherit;          /* 親要素のフォントを継承する */
+    color: #333333;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;     /* 薄いグレーの枠線 */
+    border-radius: 6px;            /* 角を丸くする */
+    outline: none;                 /* ブラウザデフォルトの青い枠を消す */
+    box-sizing: border-box;        /* widthにpaddingを含める */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* フォーカス時のアニメーション */
+}
+
+/* ===== 入力欄のフォーカス時（クリックして選択したとき） ===== */
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: #2E7D32;         /* 枠線をグリーンに変える */
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);  /* グリーンのグロー効果 */
+}
+
+/* ===== テキストエリア（textarea） ===== */
+textarea {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-family: inherit;          /* 入力した文字のフォントを統一する */
+    color: #333333;
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    border-radius: 6px;
+    outline: none;
+    box-sizing: border-box;
+    resize: vertical;              /* 縦方向のみリサイズを許可する */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* ===== テキストエリアのフォーカス時 ===== */
+textarea:focus {
+    border-color: #2E7D32;
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
+}
+
+/* ===== 送信ボタンのコンテナ ===== */
+.form-submit {
+    text-align: center;            /* ボタンを中央寄せ */
+    margin-top: 8px;
+}
+
+/* ===== 送信ボタン ===== */
+.submit-btn {
+    display: inline-block;
+    background-color: #2E7D32;     /* グリーンの背景色 */
+    color: #FFFFFF;                /* 白文字 */
+    font-size: 16px;
+    font-weight: bold;
+    font-family: inherit;
+    padding: 14px 48px;
+    border: none;                  /* ブラウザデフォルトの枠線を消す */
+    border-radius: 6px;
+    cursor: pointer;               /* マウスカーソルを指マークにする */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* ===== ボタンのホバー時 ===== */
+.submit-btn:hover {
+    background-color: #1B5E20;     /* 少し濃いグリーンに変化 */
+    transform: translateY(-2px);   /* 少し浮き上がる */
+}
+
+/* ===== ボタンのクリック時（押している瞬間） ===== */
+.submit-btn:active {
+    transform: translateY(0);      /* 元の位置に戻して「押し込まれた」感を出す */
+}
+
+@media (max-width: 768px) {
+ 
+    /* ===== body 全体のフォントサイズと行間を調整 ===== */
+    body {
+        font-size: 15px;            /* パソコン16px → スマホ15px */
+        line-height: 1.9;           /* 行間を少し広めに */
+    }
+ 
+    /* ===== h2 見出しのサイズを調整 ===== */
+    h2 {
+        font-size: 19px;
+    }
+ 
+    /* ===== h3 見出しのサイズを調整 ===== */
+    h3 {
+        font-size: 16px;
+    } 
+    
+    /* === 内容交換：ヘッダ内部を調整（ハンバーガー対応）=== */    
+    .header-inner { 
+        flex-direction: row;        /* タイトルとボタンを横並びに */
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        flex-wrap: wrap;        /* 広さを確保 */  
+    }
+ 
+    /* ===== サイトタイトルのフォントサイズを調整 ===== */
+    .site-title {
+        font-size: 17px;
+    }
+ 
+    /* === 内容を追加する:   ハンバーガーボタンをスマートフォンで表示 === */
+    .hamburger-btn {
+        display: flex;      /* スマートフォンでは表示する */
+    }
+
+ 
+    /* === styleを追加：ナビゲーションを初期状態から非表示にする === */
+    .main-nav {
+        display: none;      /* 最初は非表示 */
+        width: 100%;
+        order: 3;           /* タイトル・ボタンの後ろに配置 */
+    }
+ 
+    /* === styleを追加：メニューが開いている場合はナビゲーション === */
+    .main-nav.is-open {
+        display: block;     /* 見せる役割 */
+        width:100%;         /* 閉じるボタン[ X ] 下に下がる */
+    }
+ 
+    /* === コンテンツ交換：エクスプローラの垂直方向と === */
+    .nav-list {
+        flex-direction: column;     /* 陳列方向を縦（上から下）に切り替える */
+        width: 100%;
+        padding: 8px 0 12px;
+        gap: 0;
+    }
+ 
+    /* === コンテンツ交換：各ナビゲーションリンクをいっぱいにする === */
+    .nav-list a {
+        display: block;
+        width: 100%;
+        /* padding: 12px 16px;
+        border-radius: 0; */
+        padding: 16px 18px;
+        color: #FFFFFF;
+        text-decoration: none;
+        font-size: 15px;
+        border-radius: 4px;
+        transition: background-color 0.2s ease, color 0.2s ease;  /* ← これを追加 */
+    }
+
+    /* ===== メインコンテンツの余白を調整 ===== */
+    .main-content {
+        padding: 24px 16px;         /* 上下24px、左右16pxに変更 */
+    }
+ 
+    /* ===== ページタイトルのフォントサイズを調整 ===== */
+    .main-content h1 {
+        font-size: 22px;            /* パソコン28px → スマホ22px */
+        margin-bottom: 20px;
+    }
+
+    /* ===== プロフィールカードを縦並びに変更 ===== */
+    .profile-card {
+        flex-direction: column;     /* 横並び → 縦並びに切り替え */
+        align-items: center;        /* 中央揃えにする */
+        gap: 20px;                  /* 写真とテキストの間隔 */
+             
+    }
+ 
+    /* ===== プロフィール写真のサイズを調整 ===== */
+    .profile-photo img {
+        width: 140px;           /* 正方形に近いサイズに調整 */
+        height: 140px;
+        border-radius: 50%;     /* 円形に表示 */
+        object-fit: cover;      /* 画像の縦横比を維持しながら領域をいっぱいにする */
+        display: block;
+        margin: auto;           /* 横方向の中央揃え */
+
+
+    }
+ 
+    /* ===== プロフィール情報を中央揃えに ===== */
+    .profile-info {
+        text-align: center;
+    }
+ 
+    /* ===== 自己紹介テキストの左ボーダーを消す ===== */
+    .tagline {
+        border-left: none;
+        padding-left: 0;
+    }
+ 
+    /* ===== スキルリストを左揃えのまま維持 ===== */
+    .skill-list {
+        display: inline-block;      /* リストを中央寄せできるようにする */
+        text-align: left;
+    }
+
+        /* ===== 作品集グリッドを縦並びに変更 ===== */
+    .works-grid {
+        flex-direction: column;     /* 横並び → 縦並びに切り替え */
+        gap: 16px;                  /* カード間の間隔を少し狭める */
+    }
+ 
+    /* ===== 作品カードを画面いっぱいに広げる ===== */
+    .work-card {
+        flex: none;         /* flex の自動サイズ調整をオフ */
+        width: 100%;        /* 画面の幅いっぱいに広げる */
+        padding: 20px;      /* 内側余白を少し狭める */
+    } 
+
+    /* ===== フォームのスマートフォン向け調整 ===== */
+    .contact-form {
+        max-width: 100%;        /* スマートフォンでは幅いっぱいに広げる */
+    }
+
+    /* ===== 送信ボタンをスマートフォンでは幅いっぱいに ===== */
+    .submit-btn {
+        width: 100%;            /* 幅いっぱいのボタン */
+        padding: 16px;
+    }
+
+    /* ===== フッターの文字サイズと余白を調整 ===== */
+    .site-footer {
+        font-size: 13px;
+        margin-top: 40px;
+        padding: 16px;
+    }
+}
+
+/* ========================================
+   タブレット向けスタイル（769px〜1024px）
+   ======================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+ 
+    /* ===== メインコンテンツの最大幅を調整 ===== */
+    .main-content {
+        max-width: 760px;
+        padding: 32px 20px;
+    }
+ 
+    /* ===== 作品カードを2列表示にする ===== */
+    .work-card {
+        flex: 1 1 calc(50% - 12px);    /* 2列になるように幅を調整 */
+    }
+ 
+    /* ===== ナビゲーションの余白を調整 ===== */
+    .nav-list a {
+        padding: 14px 14px;
+        font-size: 14px;
+    }
+ 
+    .profile-card {
+        width:fit-content;  /* 幅をコンテンツサイズに合わせて自動調整 */
+        margin:auto;        /* 外部左右余白を中央に */ 
+    }
+
+    .skill-list {
+        list-style-position: inside;    /* ブリット記号をテキスト領域の内側にインデント */
+    }
+}

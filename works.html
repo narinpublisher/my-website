@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <!-- 全ページの <head> 内に必ず入れる -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集 | わたしのWebサイト</title>
+    <!-- PNG形式の場合はこちら -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ナビゲーションバー（全ページ共通） -->
+    <header class="site-header">
+        <div class="header-inner">
+            <p class="site-title">
+                <a href="index.html">🌿 わたしのWebサイト</a>
+            </p>
+            <!-- header-inner の中、nav タグの直前に追加 -->
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="メニューを開く">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="about.html">プロフィール</a></li>
+                    <li><a href="works.html" class="active">作品集</a></li>
+                    <!-- ↓ 第4章から引き継いで「お問い合わせ」を追加 ↓ -->
+                    <li><a href="contact.html">お問い合わせ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="main-content">
+        <h1>作品集</h1>
+        <p>これまでに作ったWebページを紹介します。</p>
+        <div class="works-grid">
+            <div class="work-card">
+                <h3>プロフィールページ ver.1</h3>
+                <p>第1章・第2章で作ったシンプルなプロフィールページです。</p>
+                <a href="index.html" class="work-link">見る →</a>
+            </div>
+            <div class="work-card">
+                <h3>Flexboxレイアウト</h3>
+                <p>第4章で作ったFlexboxを使った横並びプロフィールカードです。</p>
+                <a href="index.html" class="work-link">見る →</a>
+            </div>
+            <div class="work-card">
+                <h3>（作品追加予定）</h3>
+                <p>これからもどんどん作品を追加していきます！</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 わたしのWebサイト</p>
+    </footer>
+
+    <script>
+        // ハンバーガーボタンとナビゲーションを取得
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mainNav = document.querySelector('.main-nav');
+ 
+        // ボタンがクリックされたときの処理
+        hamburgerBtn.addEventListener('click', function() {
+        // ボタンに 'is-open' クラスを付けたり外したりする
+        hamburgerBtn.classList.toggle('is-open');
+        // ナビゲーションにも 'is-open' クラスを付けたり外したりする
+        mainNav.classList.toggle('is-open');
+    });
+    </script>
+
+</body>
+</html>
